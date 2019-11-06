@@ -15,20 +15,27 @@ function button_func($atts, $content = null) {
 		'style' => '',
     ), $atts );
     // var_dump($a['text']);
-    return '<a ' ($a['url']) ? 'href="'. $a['url']  : "".';"><button class="button" style="' . $a['style'] .';">' . $a['text'] . '</button></a> ';
+    $url = '';
+    $style = '';
+    $width = '';
+    $background = ' style="' . ' background:' . $a['background'] . '"';
+    
+    if ( $a['style'] ) {
+      $background = ' style="' . $a['style'] . ';' . ' background:' . $a['background'] . '"';
+    }
+    if ( $a['width'] ) {
+      $background = ' style="' . $a['style'] . ';' . ' background:' . $a['background'] . ';' . ' width:' . $a['width'] . 'px"';
+      // $width = ' width="' . $a['width'] . '"';
+    }
+    if ( $a['url'] ) {
+      $url = ' href="' . $a['url'] . '"';
+    }
+    return '<a' . $url . '><button class="button" '. $background . $width .'>' . $a['text'] . '</button></a> ';
 }
 
 add_shortcode( 'button', 'button_func' );
 
-// [bartag foo="foo-value"]
-// function bartag_func( $atts ) {
-// 	$a = shortcode_atts( array(
-// 		'foo' => 'something',
-// 		'bar' => 'something else',
-// 	), $atts );
 
-// 	return "foo = {$a['foo']}";
-// }
 // Style
 function wpse_load_plugin_css() {
     $plugin_url = plugin_dir_url( __FILE__ );
