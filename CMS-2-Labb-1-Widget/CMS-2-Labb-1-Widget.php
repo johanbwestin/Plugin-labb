@@ -54,10 +54,6 @@ class YouTube_Widget extends WP_Widget {
 			$autoplay = 0;
 		}
 
- 		echo '<p><b>RSS ID: </b>' . $id . '</p>';
-		echo '<p><b># autoplay: </b>' . $autoplay . '</p>';
-		echo '<p><b># controls: </b>' . $controls . '</p>';
-		
 		echo '<iframe 
 			width="560" 
 			height="315" 
